@@ -1,5 +1,7 @@
-#include <utility.h>
+#include <util.h>
 #include <string>
+
+#include "definition.h"
 
 using namespace std;
 
@@ -47,4 +49,20 @@ bool myStr2Int(const string& str, int& num)
    }
    num *= sign;
    return valid;
+}
+
+
+/**
+ * get max value of four and return direction
+**/
+Direction maxValue(int* a) {
+	Direction max_dir = top_left;
+	int max = a[top_left];
+	for (int dir = top_left; dir != last; dir++) {
+    	if (a[dir] > max) {
+        	max = a[dir];
+        	max_dir = static_cast<Direction>(dir);
+    	}
+	}
+	return max_dir;
 }

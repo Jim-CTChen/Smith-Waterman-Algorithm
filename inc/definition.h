@@ -8,3 +8,11 @@
  * v GAP_PENALTY_EXTENSION
  * 
 **/
+
+enum Direction {
+  top_left = 0,
+  top = 1,
+  left = 2,
+  zero = 3,
+  last
+};

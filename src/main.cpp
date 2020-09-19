@@ -4,9 +4,12 @@
 #include <string>
 
 #include "DS.h"
-// #include "util.h"
+#include "Mng.h"
+#include "util.h"
 
 using namespace std;
+
+ScoreMatrixMng Manager;
 
 int main()
 {
@@ -25,5 +28,8 @@ int main()
   seq2 = new char[M];
   strcpy(seq1, input1.c_str());
   strcpy(seq2, input2.c_str());
-  
+  Manager.init(N, M);
+  Manager.setSeq1(seq1);
+  Manager.setSeq2(seq2);
+  // Manager.printMatrix();
 }

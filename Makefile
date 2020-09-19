@@ -8,7 +8,7 @@ SRC_DIR = src/
 INC_DIR = inc/ 
 BIN_DIR = bin/
 
-EXEC = cell_move_router
+EXEC = Smith-Waterman
 BIN	= $(addprefix $(BIN_DIR), $(EXEC))
 INC = -I$(INC_DIR)
 SRC = $(wildcard $(SRC_DIR)*.cpp)
