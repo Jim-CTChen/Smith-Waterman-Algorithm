@@ -5,11 +5,12 @@
 
 #include "DS.h"
 #include "Mng.h"
+#include "definition.h"
 #include "util.h"
 
 using namespace std;
 
-ScoreMatrixMng Manager;
+ScoreMatrixMng Manager(GAP_PENALTY_TYPE_LINEAR);
 
 int main()
 {

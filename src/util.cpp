@@ -1,5 +1,6 @@
 #include <util.h>
 #include <string>
+#include <vector>
 
 #include "definition.h"
 
@@ -53,16 +54,19 @@ bool myStr2Int(const string& str, int& num)
 
 
 /**
- * get max value of four and return direction
+ * get max value and return index
 **/
-Direction maxValue(int* a) {
-	Direction max_dir = top_left;
-	int max = a[top_left];
-	for (int dir = top_left; dir != last; dir++) {
-    	if (a[dir] > max) {
-        	max = a[dir];
-        	max_dir = static_cast<Direction>(dir);
+vector<int> maxValue(vector<int> a) {
+   	vector<int> max_index;
+   	max_index.push_back(0);
+	for (size_t i = 1; i < a.size(); ++i) {
+    	if (a[i] > a[max_index[0]]) {
+			max_index.clear();
+			max_index.push_back(i);
     	}
+		else if (a[i] == a[max_index[0]]) {
+			max_index.push_back(i);
+		}
 	}
-	return max_dir;
+	return max_index;
 }

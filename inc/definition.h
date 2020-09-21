@@ -3,16 +3,12 @@
 #define GAP_PENALTY_EXTENSION 0.5
 /**
  * affine gap penalty def: uk + v
- * u GAP_PENALTY_OPENING
+ * v GAP_PENALTY_OPENING
  * k length
- * v GAP_PENALTY_EXTENSION
+ * u GAP_PENALTY_EXTENSION
  * 
+ * linear gap penalty def: v
 **/
 
-enum Direction {
-  top_left = 0,
-  top = 1,
-  left = 2,
-  zero = 3,
-  last
-};
+const int GAP_PENALTY_TYPE_LINEAR = 1;
+const int GAP_PENALTY_TYPE_AFFINE = 2;
