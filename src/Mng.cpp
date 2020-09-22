@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <utility>
 
 #include "definition.h"
 #include "util.h"
@@ -36,19 +37,23 @@ void ScoreMatrixMng::init(int n, int m) {
 }
 
 void ScoreMatrixMng::printMatrix() {
-	for (int i = 0; i < M; ++i) {
-		for (int j = 0; j < N; ++j) {
-			printf("%4d",score_matrix[i][j]());
+	for (int i = 0; i < M+1; ++i) {
+		if (i == 0) printf("        ");
+		else printf("%4c",seq1[i-1]);
+	}
+	cout << endl;
+	for (int i = 0; i < M+1; ++i) {
+		if (i == 0) printf("    ");
+		else printf("%4c", seq2[i-1]);
+		for (int j = 0; j < N+1; ++j) {
+			printf("%4d", score_matrix[i][j]());
 		}
 		cout << endl;
 	}
 }
 
-// void ScoreMatrixMng::calculateMatrix() {
-// 	for (int i )
-// }
 
-void ScoreMatrixMng::calculateScore(int x, int y) {
+int ScoreMatrixMng::calculateScore(int x, int y) {
 	const int DIR_TOP_LEFT = 0;
 	const int DIR_TOP = 1;
 	const int DIR_LEFT = 2;
@@ -57,7 +62,7 @@ void ScoreMatrixMng::calculateScore(int x, int y) {
 	int top_score = 0;
 	int left_score = 0;
 	// (x-1, y-1)
-	top_left_score = seq1[x] == seq2[y] ? 
+	top_left_score = seq1[y-1] == seq2[x-1] ? 
 		score_matrix[x-1][y-1]() + SUBSTITUTION_MATRIX_WEIGHT :
 		score_matrix[x-1][y-1]() - SUBSTITUTION_MATRIX_WEIGHT;
   	switch (function_type) {
@@ -92,4 +97,30 @@ void ScoreMatrixMng::calculateScore(int x, int y) {
 				break;
 		}
 	}
+	return scores_candidates[result[0]];
+}
+
+void ScoreMatrixMng::calculateMatrix() {
+	max_index.clear();
+	int max_value = 0;
+	for (int i = 1; i < M+1; ++i) {
+		for (int j = 1; j < N+1; ++j) {
+			int result = calculateScore(i, j);
+			if (result > max_value) {
+				max_index.clear();
+				max_index.push_back(pair<int, int>(i, j));
+				max_value = result;
+			} else if (result == max_value) {
+				max_index.push_back(pair<int, int>(i, j));
+			}
+		}
+	}
+	// cout << "index of max score: " << endl;
+	// for (auto it : max_index) {
+	// 	cout << "(" << it.first << ", " << it.second << ")" << endl;
+	// }
+}
+
+void ScoreMatrixMng::traceBack() {
+	
 }

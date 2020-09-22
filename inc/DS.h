@@ -12,8 +12,10 @@ class ScoreMatrixGrid {
     ~ScoreMatrixGrid();
     void init(int, int);
     int operator() () { return score; }
-    int operator + (int x) { return (score += x); }
-    int operator - (int x) { return (score -= x); }
+    int operator + (int x) { return (score + x); }
+    int operator - (int x) { return (score - x); }
+    int operator += (int x) { return (score += x); }
+    int operator -= (int x) { return (score -= x); }
     int operator = (int x) { return (score = x); }
     void addParent(ScoreMatrixGrid* p) { parents.push_back(p); }
     int score = 0;

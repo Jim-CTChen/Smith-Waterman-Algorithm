@@ -1,5 +1,5 @@
 #define SUBSTITUTION_MATRIX_WEIGHT 3
-#define GAP_PENALTY_OPENING 10
+#define GAP_PENALTY_OPENING 2
 #define GAP_PENALTY_EXTENSION 0.5
 /**
  * affine gap penalty def: uk + v

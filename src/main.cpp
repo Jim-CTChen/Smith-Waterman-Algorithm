@@ -32,5 +32,6 @@ int main()
   Manager.init(N, M);
   Manager.setSeq1(seq1);
   Manager.setSeq2(seq2);
-  // Manager.printMatrix();
+  Manager.calculateMatrix();
+  Manager.printMatrix();
 }
